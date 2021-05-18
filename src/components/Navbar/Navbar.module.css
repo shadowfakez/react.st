@@ -12,3 +12,36 @@
 .item a.active {
     color: gold;
 }
+
+.friends {
+    display: table-cell;
+}
+
+.friends img {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+
+.friends a{
+    color: white;
+    text-decoration: none;
+}
+
+.friends a.active {
+    color: gold;
+}
+
+.friendsList {
+    display: table;
+}
+
+.friendsBlock {
+    padding-top: 50px;
+}
+
+.friendsBlock a {
+    color: white;
+    text-decoration: none;
+}
+
