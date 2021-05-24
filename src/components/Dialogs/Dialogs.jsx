@@ -1,15 +1,15 @@
-import s from './Dialogs.module.css';
-import {NavLink} from "react-router-dom";
 import Dialog from "./Dialog/Dialog";
 import Messages from "./Messages/Messages";
 
 const Dialogs = (props) => {
     return (
-        <div className={s.dialogs}>
+        <div className="grid grid-cols-6">
 
-                <Dialog dialogs={props.state.dialogs} />
+            <Dialog dialogs={props.state.dialogs}/>
+            <div className="col-start-2 col-span-5">
+                <Messages messages={props.state.messages}/>
+            </div>
 
-                <Messages messages={props.state.messages} />
 
         </div>
     );
