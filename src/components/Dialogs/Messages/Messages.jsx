@@ -1,4 +1,5 @@
 import React from "react";
+import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../../redux/dialogs-reducer";
 
 const MessageItem = (props) => {
 
@@ -16,10 +17,15 @@ const Messages = (props) => {
 
     let messagesElements = props.messages.map(m => <MessageItem message={m.message}/>)
 
-    let newMesEl = React.createRef();
-    let newMess = () => {
-        let message = newMesEl.current.value;
-        alert(message);
+    let newMessageElement = React.createRef();
+
+    let addNewMessage = () => {
+        props.dispatch(addMessageActionCreator());
+    }
+    let onMessageChange = (e) => {
+        let text = e.target.value;
+        let action = updateNewMessageTextActionCreator(text);
+        props.dispatch(action);
     }
 
     return (
@@ -28,14 +34,19 @@ const Messages = (props) => {
                 {messagesElements}
             </div>
             <div className="flex">
-                <textarea className="m-4 p-4 w-full h-32 rounded-md resize-none border-2 border-gray-700"
-                          ref={newMesEl}/>
+                <textarea
+                    className="m-4 p-4 w-full h-32 rounded-md resize-none border-2 border-gray-700"
+                    ref={newMessageElement}
+                    value={props.newMessageText}
+                    onChange={onMessageChange}
+                />
             </div>
 
             <div className="flex justify-center p-4">
                 <button
                     className="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded "
-                    onClick={newMess}>Add new message
+                    onClick={addNewMessage}>
+                    Add new message
                 </button>
             </div>
 
